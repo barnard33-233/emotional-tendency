@@ -54,7 +54,7 @@ def SOPMI(splited_data: list):
         for word in comment_words:
             if word in word_lib:
                 word_lib[word].isInComment(cnt_seeds)
-            elif word not in globalv.seed_words and word not in globalv.blacklist_words:
+            elif word not in globalv.seed_words["positive"]+globalv.seed_words["negative"] and word not in globalv.blacklist_words:
                 word_lib[word] = Word(word)
                 word_lib[word].isInComment(cnt_seeds)
     for seed in p_seeds:
@@ -68,6 +68,6 @@ def SplitNSort(word_sopmi: dict) -> list:
     posw_sopmi = {x: word_sopmi[x] for x in word_sopmi if word_sopmi[x] > 0.0}
     negw_sopmi = {x: word_sopmi[x] for x in word_sopmi if word_sopmi[x] < 0.0}
     posw = sorted(posw_sopmi.items(), key=lambda key: key[1], reverse=True)
-    negw = sorted(negw_sopmi.items(), key=lambda key: key[1], reverse=True)
+    negw = sorted(negw_sopmi.items(), key=lambda key: key[1], reverse=False)
     result = [posw, negw]
     return result

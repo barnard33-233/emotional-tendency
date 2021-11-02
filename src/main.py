@@ -19,6 +19,7 @@ def main():
 
 if __name__ == '__main__':
     init.initialize()
+    print(globalv.seed_words)
     if globalv.test_flag:
         Stdout_save = sys.stdout
         sys.stdout = open("./out.txt", 'w', encoding='utf-8')

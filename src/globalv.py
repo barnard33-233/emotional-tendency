@@ -1,12 +1,13 @@
 # -*- coding = UTF-8 -*-
 test_flag = False
 log_flag = False
+paddle_flag = True
 blacklist_words = [
     ',', '.', ':', ';', '。', '，', '；', '：', '、'
 ]
 seed_words = {
-    "positive": ["好吃", "好评"],
-    "negative": ["难吃", "差评"]
+    "positive": [],
+    "negative": []
 }
 seeds_location = '..\\data\\seeds.csv'
 data_location = '..\\data\\comments.csv'
