@@ -15,6 +15,7 @@ def set_path():
         globalv.seeds_location = '.\\data\\seeds.csv'
         globalv.pos_location = '.\\data\\result_pos.csv'
         globalv.neg_location = '.\\data\\result_neg.csv'
+        globalv.frequency_location = '.\\data\\frequency.csv'
     return None
 
 

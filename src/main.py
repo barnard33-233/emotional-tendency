@@ -14,7 +14,7 @@ def main():
     [posw, negw] = SOPMI.SplitNSort(word_sopmi)
     dataop.WriteCsv(posw, ["word", "so-pmi"], globalv.pos_location)
     dataop.WriteCsv(negw, ["word", "so-pmi"], globalv.neg_location)
-    pass
+    return None
 
 
 if __name__ == '__main__':
