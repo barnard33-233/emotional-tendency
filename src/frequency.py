@@ -1,3 +1,4 @@
+# -*- coding=utf-8 -*-
 import init
 import globalv
 import dataop

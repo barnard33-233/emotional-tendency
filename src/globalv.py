@@ -14,3 +14,5 @@ data_location = '..\\data\\comments.csv'
 pos_location = '..\\data\\result_pos.csv'
 neg_location = '..\\data\\result_neg.csv'
 frequency_location = '..\\data\\frequency.csv'
+# floor_pmi = -0.00000000000001
+max_dist = 100000
