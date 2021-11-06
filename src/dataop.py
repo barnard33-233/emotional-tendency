@@ -5,8 +5,6 @@ import re
 import jieba
 import paddle
 
-black_list = []
-
 
 def ReadCsv(file_name):
     try:
