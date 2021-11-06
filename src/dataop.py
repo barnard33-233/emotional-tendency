@@ -2,6 +2,7 @@
 # import globalv
 import csv
 import re
+import frequency
 import jieba
 import paddle
 
@@ -57,3 +58,31 @@ def SplitNSort(words: dict) -> list:
     negw = sorted(negws.items(), key=lambda key: key[1], reverse=False)
     result = [posw, negw]
     return result
+
+
+def WriteTop50(posw: list, negw: list, splited_data, path: str):
+    (sth, word_cnt) = frequency.getFrequency(splited_data)
+    cntp, cntn = 0, 0
+    idp, idn = 0, 0
+    lp, ln = len(posw), len(negw)
+    posw50, negw50 = [], []
+    while cntp <= 50 and idp < lp:
+        if word_cnt[posw[idp][0]] >= 10:
+            posw50.append(posw[idp])
+            cntp += 1
+        idp += 1
+    while cntn <= 50 and idn < ln:
+        if word_cnt[negw[idn][0]] >= 10:
+            negw50.append(negw[idn])
+            cntn += 1
+        idn += 1
+    with open(path, "w", encoding='utf-8', newline='') as csvfile:
+        csv_writer = csv.writer(csvfile)
+        csv_writer.writerow(['pos', 'val'])
+        for item in posw50:
+            csv_writer.writerow(item)
+        csv_writer.writerow(['\n'])
+        csv_writer.writerow(['neg', 'val'])
+        for item in negw50:
+            csv_writer.writerow(item)
+    print("finish writing {}".format(path))

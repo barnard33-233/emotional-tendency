@@ -12,6 +12,7 @@ def main():
     [posw, negw] = SOPMI.SplitSOPMIp(word_sopmi)
     dataop.WriteCsv(posw, ["word", "sopmi"], globalv.pos_location)
     dataop.WriteCsv(negw, ["word", "sopmi"], globalv.neg_location)
+    dataop.WriteTop50(posw, negw, splited_data, globalv.result_location)
     return None
 
 

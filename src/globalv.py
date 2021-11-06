@@ -9,11 +9,12 @@ seed_words = {
     "positive": [],
     "negative": []
 }
-seeds_location = '..\\data\\seeds.csv'
-data_location = '..\\data\\comments.csv'
-pos_location = '..\\data\\result_pos.csv'
-neg_location = '..\\data\\result_neg.csv'
-frequency_location = '..\\data\\frequency.csv'
+seeds_location = ''
+data_location = ''
+pos_location = ''
+neg_location = ''
+result_location = ''
+frequency_location = ''
 # floor_pmi = -0.00000000000001
 max_dist = 100000
 version = ''

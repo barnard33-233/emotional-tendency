@@ -14,6 +14,7 @@ def main():
     [posw, negw] = dataop.SplitNSort(word_sopmi)
     dataop.WriteCsv(posw, ["word", "so-pmi"], globalv.pos_location)
     dataop.WriteCsv(negw, ["word", "so-pmi"], globalv.neg_location)
+    dataop.WriteTop50(posw, negw, splited_data, globalv.result_location)
     return None
 
 
