@@ -37,8 +37,9 @@ class Word:
                 so_pmi -= pmi
         return so_pmi
 
-    def Cal_SOPMIp(self, cnt_comment: float, cnt_seeds: dict) -> float:
-        sopmi = 0.0
+    def Cal_SOPMIp(self, cnt_comment: float, cnt_seeds: dict):
+        sopmi_pos = 0.0
+        sopmi_neg = 0.0
         cnt_seed = len(cnt_seeds) / 2
         for seed in self.cnt_seeds:
             cnt_tog = self.cnt_seeds[seed] + 1
@@ -47,10 +48,10 @@ class Word:
             pmi = math.log(cnt_tog * cnt_comment, 2) - math.log((cnt_seeds[seed] + 1) * cnt_word * distance * cnt_seed, 2)
             # pmi = max(pmi, globalv.floor_pmi)
             if seed in globalv.seed_words["positive"]:
-                sopmi += pmi
+                sopmi_pos += pmi
             elif seed in globalv.seed_words["negative"]:
-                sopmi -= pmi
-        return sopmi
+                sopmi_neg += pmi
+        return (sopmi_pos, sopmi_neg)
 
 
 def SOPMI(splited_data: list):
@@ -121,10 +122,21 @@ def SOPMI_d(splited_data):
     return word_sopmi
 
 
-def SplitNSort(word_sopmi: dict) -> list:
-    posw_sopmi = {x: word_sopmi[x] for x in word_sopmi if word_sopmi[x] > 0.0}
-    negw_sopmi = {x: word_sopmi[x] for x in word_sopmi if word_sopmi[x] < 0.0}
-    posw = sorted(posw_sopmi.items(), key=lambda key: key[1], reverse=True)
-    negw = sorted(negw_sopmi.items(), key=lambda key: key[1], reverse=False)
-    result = [posw, negw]
-    return result
+def SplitSOPMIp(word_sopmi: dict):
+    pos_sopmi = dict()
+    neg_sopmi = dict()
+    for word in word_sopmi:
+        pos_sopmi[word] = word_sopmi[word][0]
+        neg_sopmi[word] = word_sopmi[word][1]
+    posw = sorted(pos_sopmi.items(), key=lambda key: key[1], reverse=True)
+    negw = sorted(neg_sopmi.items(), key=lambda key: key[1], reverse=True)
+    return [posw, negw]
+
+
+# def SplitNSort(word_sopmi: dict) -> list:
+#     posw_sopmi = {x: word_sopmi[x] for x in word_sopmi if word_sopmi[x] > 0.0}
+#     negw_sopmi = {x: word_sopmi[x] for x in word_sopmi if word_sopmi[x] < 0.0}
+#     posw = sorted(posw_sopmi.items(), key=lambda key: key[1], reverse=True)
+#     negw = sorted(negw_sopmi.items(), key=lambda key: key[1], reverse=False)
+#     result = [posw, negw]
+#     return result
