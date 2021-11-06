@@ -1,6 +1,7 @@
 # -*- coding = UTF-8 -*-
 # import globalv
 import csv
+import re
 import jieba
 import paddle
 
@@ -36,7 +37,11 @@ def SplitSentences(file: list):
     paddle.enable_static()
     jieba.enable_paddle()
     for item in file:
-        item["review"] = jieba.lcut(item["review"], use_paddle=True)
+        tmp_review = re.split(r'(\W+)', item['review'])
+        item["review"] = []
+        for s in tmp_review:
+            s = jieba.lcut(s)
+            item["review"] += s
     return file
 
 # data structure
@@ -45,3 +50,12 @@ def SplitSentences(file: list):
 # {lable: <lable: int>, rivew: <rivew: list>}
 # ...
 # ]
+
+
+def SplitNSort(words: dict) -> list:
+    posws = {x: words[x] for x in words if words[x] > 0.0}
+    negws = {x: words[x] for x in words if words[x] < 0.0}
+    posw = sorted(posws.items(), key=lambda key: key[1], reverse=True)
+    negw = sorted(negws.items(), key=lambda key: key[1], reverse=False)
+    result = [posw, negw]
+    return result

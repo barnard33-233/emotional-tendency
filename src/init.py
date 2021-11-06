@@ -14,9 +14,15 @@ def set_path():
     if 'data' in present_path:
         globalv.data_location = '.\\data\\comments.csv'
         globalv.seeds_location = '.\\data\\seeds.csv'
-        globalv.pos_location = '.\\data\\result_pos.csv'
-        globalv.neg_location = '.\\data\\result_neg.csv'
+        globalv.pos_location = '.\\data\\result_pos{}.csv'.format(globalv.version)
+        globalv.neg_location = '.\\data\\result_neg{}.csv'.format(globalv.version)
         globalv.frequency_location = '.\\data\\frequency.csv'
+    else:
+        globalv.seeds_location = '..\\data\\seeds.csv'
+        globalv.data_location = '..\\data\\comments.csv'
+        globalv.pos_location = '..\\data\\result_pos{}.csv'.format(globalv.version)
+        globalv.neg_location = '..\\data\\result_neg{}.csv'.format(globalv.version)
+        globalv.frequency_location = '..\\data\\frequency.csv'
     return None
 
 
