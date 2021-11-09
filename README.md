@@ -49,9 +49,7 @@
 
 + 计算 word1 和 word2 的点互信息(PMI)：
 
-    $$
-    PMI(word_1, word_2) = log_2[\frac{P(word_1, word_2)}{P(word_1)×P(word_2)}]
-    $$
+    ![](http://latex.codecogs.com/gif.latex?\\PMI(word_1, word_2) = log_2[\frac{P(word_1, word_2)}{P(word_1)×P(word_2)}])
 
     其中: 
 
