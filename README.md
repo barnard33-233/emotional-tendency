@@ -48,8 +48,12 @@
 点互信息(PMI)用来衡量两个事物之间的相关性，两个事物同时出现的概率越大，其相关性越大
 
 + 计算 word1 和 word2 的点互信息(PMI)：
-
-    ![](http://latex.codecogs.com/gif.latex?\\PMI(word_1,word_2)=log_2[\frac{P(word_1,word_2)}{P(word_1)×P(word_2)}])
++ 
+    $$
+    
+    PMI(word_1,word_2)=log_2[\frac{P(word_1,word_2)}{P(word_1)×P(word_2)}]
+    
+    $$
 
     其中: 
 
